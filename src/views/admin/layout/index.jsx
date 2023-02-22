@@ -5,17 +5,21 @@ import { useSelector } from "react-redux";
 import Navbar from "components/Navbar";
 import Sidebar from "components/Sidebar";
 import { useGetUserQuery } from "state/api";
+import api from "api/routes";
+import { useGetMe } from "api/hooks/useUser";
 
 const Layout = () => {
   const isNonMobile = useMediaQuery("(min-width: 600px)");
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const userId = useSelector((state) => state.global.userId);
-  const { data } = useGetUserQuery(userId);
-
+  // const { data } = useGetUserQuery(userId);
+  const { data, isLoading } = useGetMe();
+  
   return (
     <Box display={isNonMobile ? "flex" : "block"} width="100%" height="100%">
       <Sidebar
-        user={data || {}}
+        user={data}
+        isLoading={isLoading}
         isNonMobile={isNonMobile}
         drawerWidth="250px"
         isSidebarOpen={isSidebarOpen}
@@ -23,7 +27,8 @@ const Layout = () => {
       />
       <Box flexGrow={1}>
         <Navbar
-          user={data || {}}
+          user={data}
+          isLoading={isLoading}
           isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
         />

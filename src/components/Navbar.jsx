@@ -7,8 +7,9 @@ import {
   SettingsOutlined,
   ArrowDropDownOutlined,
 } from "@mui/icons-material";
-import FlexBetween from "components/FlexBetween";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import FlexBetween from "components/FlexBetween";
 import { setMode } from "state";
 import {
   AppBar,
@@ -21,16 +22,23 @@ import {
   Menu,
   MenuItem,
   useTheme,
+  Skeleton,
 } from "@mui/material";
 
-const Navbar = ({user, isSidebarOpen, setIsSidebarOpen }) => {
+const Navbar = ({user, isSidebarOpen, setIsSidebarOpen, isLoading }) => {
   const dispatch = useDispatch();
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const [anchorEl, setAnchorEl] = useState(null);
   const isOpen = Boolean(anchorEl);
   const handleClick = (event) => setAnchorEl(event.currentTarget);
-  const handleClose = () => setAnchorEl(null);
+  const handleClose = (action) => {
+    setAnchorEl(null);
+    if (action == "logout"){
+      navigate("session/logout");
+    }
+  }
 
 
   const profileImage = "https://picsum.photos/200/200"
@@ -83,30 +91,52 @@ const Navbar = ({user, isSidebarOpen, setIsSidebarOpen }) => {
                 gap: "1rem",
               }}
             >
-              <Box
-                component="img"
-                alt="profile"
-                src={profileImage}
-                height="32px"
-                width="32px"
-                borderRadius="50%"
-                sx={{ objectFit: "cover" }}
-              />
-              <Box textAlign="left">
-                <Typography
-                  fontWeight="bold"
-                  fontSize="0.85rem"
-                  sx={{ color: theme.palette.secondary[100] }}
-                >
-                  {user.name}
-                </Typography>
-                <Typography
-                  fontSize="0.75rem"
-                  sx={{ color: theme.palette.secondary[200] }}
-                >
-                  {user.occupation}
-                </Typography>
-              </Box>
+              {!isLoading ? (
+                <>
+                  <Box
+                    component="img"
+                    alt="profile"
+                    src={profileImage}
+                    height="32px"
+                    width="32px"
+                    borderRadius="50%"
+                    sx={{ objectFit: "cover" }}
+                  />
+                  <Box textAlign="left">
+                    <Typography
+                      fontWeight="bold"
+                      fontSize="0.85rem"
+                      sx={{ color: theme.palette.secondary[100] }}
+                    >
+                      {user.data.name}
+                    </Typography>
+                    <Typography
+                      fontSize="0.75rem"
+                      sx={{ color: theme.palette.secondary[200] }}
+                    >
+                      {user.data.occupation}
+                    </Typography>
+                  </Box>
+                </>
+                ) : (
+                  <>
+                    <Skeleton
+                      variant="circular"
+                      height="32px"
+                      width="32px"
+                    />
+                    <Box textAlign="left">
+                      <Skeleton
+                        variant="text"
+                        sx={{ fontSize: "0.85rem" }}
+                      />
+                      <Skeleton
+                        variant="text"
+                        sx={{ fontSize: "0.75rem" }}
+                      />
+                    </Box>
+                  </>
+                )}
               <ArrowDropDownOutlined
                 sx={{ color: theme.palette.secondary[300], fontSize: "25px" }}
               />
@@ -117,8 +147,8 @@ const Navbar = ({user, isSidebarOpen, setIsSidebarOpen }) => {
               onClose={handleClose}
               anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
             >
-              <MenuItem onClick={handleClose}>Settings</MenuItem>
-              <MenuItem onClick={handleClose}>Log Out</MenuItem>
+              <MenuItem onClick={() => {handleClose('settings')}}>Settings</MenuItem>
+              <MenuItem onClick={() => {handleClose('logout')}}>Log Out</MenuItem>
             </Menu>
           </FlexBetween>
         </FlexBetween>

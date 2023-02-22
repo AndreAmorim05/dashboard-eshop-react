@@ -2,29 +2,29 @@ import { useMemo } from "react";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { useSelector } from "react-redux";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { QueryClientProvider } from 'react-query';
+import { queryClient } from 'utils/queryClient';
 import { themeSettings } from "theme";
-import Layout from "scenes/layout";
-import Dashboard from "scenes/dashboard";
-import Products from "scenes/products"
+
+
+import { useRoutes } from "react-router-dom";
+import { AuthProvider } from "contexts/JWTAuthContext";
+import routes from "./routes"
 
 function App() {
   const mode = useSelector((state) => state.global.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
+  const content = useRoutes(routes)
+  
   return (
     <div className="App">
-      <BrowserRouter>
+      
+      <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <Routes>
-            <Route element={<Layout />}>
-              <Route path="/" element={<Navigate to="/dashboard" replace />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/products" element={<Products />} />
-            </Route>
-          </Routes>
+          <AuthProvider>{content}</AuthProvider>
         </ThemeProvider>
-      </BrowserRouter>
+      </QueryClientProvider>
     </div>
   );
 }

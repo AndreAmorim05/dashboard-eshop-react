@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Card,
@@ -12,7 +12,9 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import BaseContainer from "components/BaseContainer";
-import { useGetProductsQuery } from "state/api";
+import { useGetProducts } from "api/hooks/useProducts";
+// import { useGetProductsQuery } from "state/api";
+
 
 const Product = ({
   _id,
@@ -89,8 +91,8 @@ const Product = ({
 };
 
 const Products = () => {
-  const { data, isLoading } = useGetProductsQuery();
-  console.log("🚀 ~ file: index.jsx:90 ~ Products ~ data", data)
+  // const { data, isLoading } = useGetProductsQuery();
+  const { data, isLoading } = useGetProducts();
   const isNonMobile = useMediaQuery("(min-width: 1000px)");
 
   return (
@@ -107,7 +109,7 @@ const Products = () => {
             "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
           }}
         >
-          {data ? data.map(
+          {data ? data.data.map(
             ({
               _id,
               name,
