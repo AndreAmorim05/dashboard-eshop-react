@@ -177,6 +177,10 @@ const JwtLogin = () => {
                         my: 2,
                         color: theme.palette.primary[900],
                         backgroundColor: theme.palette.secondary[500],
+                        '&:hover': {
+                          color: theme.palette.secondary[500],
+                          backgroundColor: theme.palette.background.alt,
+                        },
                       }}
                     >
                       Login
