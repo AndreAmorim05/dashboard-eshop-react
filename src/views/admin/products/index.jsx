@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Card,
@@ -10,11 +10,10 @@ import {
   Rating,
   useTheme,
   useMediaQuery,
-} from "@mui/material";
-import BaseContainer from "components/BaseContainer";
-import { useGetProducts } from "api/hooks/useProducts";
+} from '@mui/material';
+import BaseContainer from 'components/BaseContainer';
+import { useGetProducts } from 'api/hooks/useProducts';
 // import { useGetProductsQuery } from "state/api";
-
 
 const Product = ({
   _id,
@@ -32,9 +31,9 @@ const Product = ({
   return (
     <Card
       sx={{
-        backgroundImage: "none",
+        backgroundImage: 'none',
         backgroundColor: theme.palette.background.alt,
-        borderRadius: "0.55rem",
+        borderRadius: '0.55rem',
       }}
     >
       <CardContent>
@@ -48,7 +47,7 @@ const Product = ({
         <Typography variant="h5" component="div">
           {name}
         </Typography>
-        <Typography sx={{ mb: "1.5rem" }} color={theme.palette.secondary[300]}>
+        <Typography sx={{ mb: '1.5rem' }} color={theme.palette.secondary[300]}>
           ${Number(price).toFixed(2)}
         </Typography>
         <Rating value={rating} readOnly />
@@ -93,10 +92,10 @@ const Product = ({
 const Products = () => {
   // const { data, isLoading } = useGetProductsQuery();
   const { data, isLoading } = useGetProducts();
-  const isNonMobile = useMediaQuery("(min-width: 1000px)");
+  const isNonMobile = useMediaQuery('(min-width: 1000px)');
 
   return (
-    <BaseContainer title="PRODUCTS" subtitle="See your list of products." >
+    <BaseContainer title="PRODUCTS" subtitle="See your list of products.">
       {data || !isLoading ? (
         <Box
           mt="20px"
@@ -106,34 +105,37 @@ const Products = () => {
           rowGap="20px"
           columnGap="1.33%"
           sx={{
-            "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
+            '& > div': { gridColumn: isNonMobile ? undefined : 'span 4' },
           }}
         >
-          {data ? data.data.map(
-            ({
-              _id,
-              name,
-              description,
-              price,
-              rating,
-              // category,
-              // supply,
-              // stat,
-            }) => (
-              <Product
-                key={_id}
-                _id={_id}
-                name={name}
-                description={description}
-                price={price}
-                rating={rating}
-                // category={category.name}
-                // supply={supply}
-                // stat={stat}
-              />
+          {data ? (
+            data.data.map(
+              ({
+                _id,
+                name,
+                description,
+                price,
+                rating,
+                // category,
+                // supply,
+                // stat,
+              }) => (
+                <Product
+                  key={_id}
+                  _id={_id}
+                  name={name}
+                  description={description}
+                  price={price}
+                  rating={rating}
+                  // category={category.name}
+                  // supply={supply}
+                  // stat={stat}
+                />
+              )
             )
-          ) : 
-          <h1>No products here</h1>}
+          ) : (
+            <h1>No products here</h1>
+          )}
         </Box>
       ) : (
         <>Loading...</>

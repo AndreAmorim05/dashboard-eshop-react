@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import React, { Suspense } from 'react';
 import Loading from './Loading';
 
 const Loadable = (Component) => (props) => {

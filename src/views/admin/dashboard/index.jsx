@@ -1,13 +1,13 @@
-import React from 'react'
-import BaseContainer from 'components/BaseContainer'
-
+import React from 'react';
+import BaseContainer from 'components/BaseContainer';
 
 const Dashboard = () => {
   return (
-    <BaseContainer title={"DASHBOARD"} subtitle={"Monitor your data"}>
+    <BaseContainer
+      title={'DASHBOARD'}
+      subtitle={'Monitor your data'}
+    ></BaseContainer>
+  );
+};
 
-    </BaseContainer>
-  )
-}
-
-export default Dashboard
+export default Dashboard;

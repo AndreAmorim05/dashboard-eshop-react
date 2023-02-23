@@ -5,19 +5,19 @@ import {
   Grid,
   TextField,
   Typography,
-  useTheme
+  useTheme,
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { styled } from '@mui/material/styles';
 import useAuth from 'hooks/useAuth';
 import { Formik } from 'formik';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
-const Paragraph = ({children}) => {
-  return <Typography variant="body2">{children}</Typography>
-}
+const Paragraph = ({ children }) => {
+  return <Typography variant="body2">{children}</Typography>;
+};
 
 const FlexBox = styled(Box)(() => ({ display: 'flex', alignItems: 'center' }));
 
@@ -45,8 +45,8 @@ const JWTRoot = styled(JustifyBox)(() => ({
 
 // inital login credentials
 const initialValues = {
-  email: "j@gmail.com",
-  password: "123",
+  email: 'j@gmail.com',
+  password: '123',
   remember: true,
 };
 
@@ -55,7 +55,9 @@ const validationSchema = Yup.object().shape({
   password: Yup.string()
     .min(3, 'Password must be 3 character length')
     .required('Password is required!'),
-  email: Yup.string().email('Invalid Email address').required('Email is required!'),
+  email: Yup.string()
+    .email('Invalid Email address')
+    .required('Email is required!'),
 });
 
 const JwtLogin = () => {
@@ -71,7 +73,7 @@ const JwtLogin = () => {
       await login(values.email, values.password);
       navigate('/');
     } catch (e) {
-      console.log("🚀 ~ file: index.jsx:74 ~ handleFormSubmit ~ e:", e)
+      console.log('🚀 ~ file: index.jsx:74 ~ handleFormSubmit ~ e:', e);
       setLoading(false);
     }
   };
@@ -82,7 +84,11 @@ const JwtLogin = () => {
         <Grid container>
           <Grid item sm={6} xs={12}>
             <JustifyBox p={4} height="100%" sx={{ minWidth: 320 }}>
-              <img src="/assets/images/illustrations/dreamer.svg" width="100%" alt="" />
+              <img
+                src="/assets/images/illustrations/dreamer.svg"
+                width="100%"
+                alt=""
+              />
             </JustifyBox>
           </Grid>
 
@@ -93,7 +99,14 @@ const JwtLogin = () => {
                 initialValues={initialValues}
                 validationSchema={validationSchema}
               >
-                {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
+                {({
+                  values,
+                  errors,
+                  touched,
+                  handleChange,
+                  handleBlur,
+                  handleSubmit,
+                }) => (
                   <form onSubmit={handleSubmit}>
                     <TextField
                       fullWidth
@@ -160,7 +173,10 @@ const JwtLogin = () => {
                       Don't have an account?
                       <NavLink
                         to="/session/signup"
-                        style={{ color: theme.palette.primary.main, marginLeft: 5 }}
+                        style={{
+                          color: theme.palette.primary.main,
+                          marginLeft: 5,
+                        }}
                       >
                         Register
                       </NavLink>

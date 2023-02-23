@@ -1,5 +1,5 @@
 import { Box, Button, Card, Grid, styled, TextField } from '@mui/material';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const FlexBox = styled(Box)(() => ({
@@ -40,7 +40,11 @@ const ForgotPassword = () => {
         <Grid container>
           <Grid item xs={12}>
             <JustifyBox p={4}>
-              <img width="300" src="/assets/images/illustrations/dreamer.svg" alt="" />
+              <img
+                width="300"
+                src="/assets/images/illustrations/dreamer.svg"
+                alt=""
+              />
             </JustifyBox>
 
             <ContentBox>
@@ -56,7 +60,12 @@ const ForgotPassword = () => {
                   sx={{ mb: 3, width: '100%' }}
                 />
 
-                <Button fullWidth variant="contained" color="primary" type="submit">
+                <Button
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  type="submit"
+                >
                   Reset Password
                 </Button>
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   LightModeOutlined,
   DarkModeOutlined,
@@ -6,11 +6,11 @@ import {
   Search,
   SettingsOutlined,
   ArrowDropDownOutlined,
-} from "@mui/icons-material";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import FlexBetween from "components/FlexBetween";
-import { setMode } from "state";
+} from '@mui/icons-material';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import FlexBetween from 'components/FlexBetween';
+import { setMode } from 'state';
 import {
   AppBar,
   Button,
@@ -23,9 +23,9 @@ import {
   MenuItem,
   useTheme,
   Skeleton,
-} from "@mui/material";
+} from '@mui/material';
 
-const Navbar = ({user, isSidebarOpen, setIsSidebarOpen, isLoading }) => {
+const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen, isLoading }) => {
   const dispatch = useDispatch();
   const theme = useTheme();
   const navigate = useNavigate();
@@ -35,23 +35,22 @@ const Navbar = ({user, isSidebarOpen, setIsSidebarOpen, isLoading }) => {
   const handleClick = (event) => setAnchorEl(event.currentTarget);
   const handleClose = (action) => {
     setAnchorEl(null);
-    if (action == "logout"){
-      navigate("session/logout");
+    if (action == 'logout') {
+      navigate('session/logout');
     }
-  }
+  };
 
-
-  const profileImage = "https://picsum.photos/200/200"
+  const profileImage = 'https://picsum.photos/200/200';
 
   return (
     <AppBar
       sx={{
-        position: "static",
-        background: "none",
-        boxShadow: "none",
+        position: 'static',
+        background: 'none',
+        boxShadow: 'none',
       }}
     >
-      <Toolbar sx={{ justifyContent: "space-between" }}>
+      <Toolbar sx={{ justifyContent: 'space-between' }}>
         {/* LEFT SIDE */}
         <FlexBetween>
           <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
@@ -73,10 +72,10 @@ const Navbar = ({user, isSidebarOpen, setIsSidebarOpen, isLoading }) => {
         {/* RIGHT SIDE */}
         <FlexBetween gap="1.5rem">
           <IconButton onClick={() => dispatch(setMode())}>
-            {theme.palette.mode === "dark" ? (
-              <DarkModeOutlined sx={{ fontSize: "25px" }} />
+            {theme.palette.mode === 'dark' ? (
+              <DarkModeOutlined sx={{ fontSize: '25px' }} />
             ) : (
-              <LightModeOutlined sx={{ fontSize: "25px" }} />
+              <LightModeOutlined sx={{ fontSize: '25px' }} />
             )}
           </IconButton>
 
@@ -84,11 +83,11 @@ const Navbar = ({user, isSidebarOpen, setIsSidebarOpen, isLoading }) => {
             <Button
               onClick={handleClick}
               sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                textTransform: "none",
-                gap: "1rem",
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                textTransform: 'none',
+                gap: '1rem',
               }}
             >
               {!isLoading ? (
@@ -100,7 +99,7 @@ const Navbar = ({user, isSidebarOpen, setIsSidebarOpen, isLoading }) => {
                     height="32px"
                     width="32px"
                     borderRadius="50%"
-                    sx={{ objectFit: "cover" }}
+                    sx={{ objectFit: 'cover' }}
                   />
                   <Box textAlign="left">
                     <Typography
@@ -118,37 +117,39 @@ const Navbar = ({user, isSidebarOpen, setIsSidebarOpen, isLoading }) => {
                     </Typography>
                   </Box>
                 </>
-                ) : (
-                  <>
-                    <Skeleton
-                      variant="circular"
-                      height="32px"
-                      width="32px"
-                    />
-                    <Box textAlign="left">
-                      <Skeleton
-                        variant="text"
-                        sx={{ fontSize: "0.85rem" }}
-                      />
-                      <Skeleton
-                        variant="text"
-                        sx={{ fontSize: "0.75rem" }}
-                      />
-                    </Box>
-                  </>
-                )}
+              ) : (
+                <>
+                  <Skeleton variant="circular" height="32px" width="32px" />
+                  <Box textAlign="left">
+                    <Skeleton variant="text" sx={{ fontSize: '0.85rem' }} />
+                    <Skeleton variant="text" sx={{ fontSize: '0.75rem' }} />
+                  </Box>
+                </>
+              )}
               <ArrowDropDownOutlined
-                sx={{ color: theme.palette.secondary[300], fontSize: "25px" }}
+                sx={{ color: theme.palette.secondary[300], fontSize: '25px' }}
               />
             </Button>
             <Menu
               anchorEl={anchorEl}
               open={isOpen}
               onClose={handleClose}
-              anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
             >
-              <MenuItem onClick={() => {handleClose('settings')}}>Settings</MenuItem>
-              <MenuItem onClick={() => {handleClose('logout')}}>Log Out</MenuItem>
+              <MenuItem
+                onClick={() => {
+                  handleClose('settings');
+                }}
+              >
+                Settings
+              </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  handleClose('logout');
+                }}
+              >
+                Log Out
+              </MenuItem>
             </Menu>
           </FlexBetween>
         </FlexBetween>

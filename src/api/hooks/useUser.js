@@ -1,6 +1,6 @@
-import { useQueryClient, useMutation,  useQuery } from "react-query";
-import api from "api/routes";
+import { useQueryClient, useMutation, useQuery } from 'react-query';
+import api from 'api/routes';
 
 export function useGetMe() {
-  return useQuery("user", api.get.me);
+  return useQuery('user', api.get.me);
 }

@@ -130,8 +130,10 @@ export function getTimeDifference(date) {
   if (difference < 60) return `${Math.floor(difference)} sec`;
   else if (difference < 3600) return `${Math.floor(difference / 60)} min`;
   else if (difference < 86400) return `${Math.floor(difference / 3660)} h`;
-  else if (difference < 86400 * 30) return `${Math.floor(difference / 86400)} d`;
-  else if (difference < 86400 * 30 * 12) return `${Math.floor(difference / 86400 / 30)} mon`;
+  else if (difference < 86400 * 30)
+    return `${Math.floor(difference / 86400)} d`;
+  else if (difference < 86400 * 30 * 12)
+    return `${Math.floor(difference / 86400 / 30)} mon`;
   else return `${(difference / 86400 / 30 / 12).toFixed(1)} y`;
 }
 
@@ -173,11 +175,11 @@ export const flat = (array) => {
 };
 
 export function convertDatetime(dateTime) {
-  const date = new Date(dateTime)
+  const date = new Date(dateTime);
   const dateConv = new Intl.DateTimeFormat('pt-BR', {
     dateStyle: 'short',
-    timeStyle:'short',
-  }).format(date)
-  
-  return dateConv.toString()
+    timeStyle: 'short',
+  }).format(date);
+
+  return dateConv.toString();
 }

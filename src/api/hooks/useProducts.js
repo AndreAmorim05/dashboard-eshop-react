@@ -1,9 +1,8 @@
-import { useQueryClient, useMutation,  useQuery } from "react-query";
-import api from "api/routes";
-
+import { useQueryClient, useMutation, useQuery } from 'react-query';
+import api from 'api/routes';
 
 export function useGetProducts() {
-  return useQuery("products", api.get.products);
+  return useQuery('products', api.get.products);
 }
 
 export function usePostProduct() {
@@ -11,7 +10,7 @@ export function usePostProduct() {
 
   return useMutation(api.post.createProduct, {
     onSuccess: () => {
-      queryClient.invalidateQueries("products");
+      queryClient.invalidateQueries('products');
     },
   });
 }
@@ -21,7 +20,7 @@ export function usePutProduct() {
 
   return useMutation(api.put.updateProduct, {
     onSuccess: () => {
-      queryClient.invalidateQueries("products");
+      queryClient.invalidateQueries('products');
     },
   });
 }
@@ -31,7 +30,7 @@ export function useDeleteProduct() {
 
   return useMutation(api.delete.deleteProduct, {
     onSuccess: () => {
-      queryClient.invalidateQueries("products");
+      queryClient.invalidateQueries('products');
     },
   });
 }

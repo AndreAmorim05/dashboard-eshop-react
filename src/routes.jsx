@@ -1,3 +1,4 @@
+import React from 'react';
 import AuthGuard from 'auth/AuthGuard';
 import adminRoutes from 'views/admin/AdminRoutes';
 import NotFound from 'views/sessions/NotFound';
@@ -12,9 +13,7 @@ const routes = [
         <Layout />
       </AuthGuard>
     ),
-    children: [
-      ...adminRoutes,
-    ],
+    children: [...adminRoutes],
   },
   ...sessionRoutes,
   { path: '/', element: <Navigate to="dashboard/default" /> },

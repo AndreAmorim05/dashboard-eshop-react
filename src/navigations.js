@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   HomeOutlined,
   ShoppingCartOutlined,
@@ -10,78 +11,77 @@ import {
   AdminPanelSettingsOutlined,
   TrendingUpOutlined,
   PieChartOutlined,
-} from '@mui/icons-material'
-
+} from '@mui/icons-material';
 
 export const navigations = [
   {
-    text: "Dashboard",
-    path: "dashboard/default",
+    text: 'Dashboard',
+    path: 'dashboard/default',
     icon: <HomeOutlined />,
   },
   {
-    text: "Client Facing",
-    path: "",
+    text: 'Client Facing',
+    path: '',
     icon: null,
   },
   {
-    text: "Products",
-    path: "dashboard/products",
+    text: 'Products',
+    path: 'dashboard/products',
     icon: <ShoppingCartOutlined />,
   },
   {
-    text: "Customers",
-    path: "",
+    text: 'Customers',
+    path: '',
     icon: <Groups2Outlined />,
   },
   {
-    text: "Transactions",
-    path: "",
+    text: 'Transactions',
+    path: '',
     icon: <ReceiptLongOutlined />,
   },
   {
-    text: "Geography",
-    path: "",
+    text: 'Geography',
+    path: '',
     icon: <PublicOutlined />,
   },
   {
-    text: "Sales",
-    path: "",
+    text: 'Sales',
+    path: '',
     icon: null,
   },
   {
-    text: "Overview",
-    path: "",
+    text: 'Overview',
+    path: '',
     icon: <PointOfSaleOutlined />,
   },
   {
-    text: "Daily",
-    path: "",
+    text: 'Daily',
+    path: '',
     icon: <TodayOutlined />,
   },
   {
-    text: "Monthly",
-    path: "",
+    text: 'Monthly',
+    path: '',
     icon: <CalendarMonthOutlined />,
   },
   {
-    text: "Breakdown",
-    path: "",
+    text: 'Breakdown',
+    path: '',
     icon: <PieChartOutlined />,
   },
   {
-    text: "Management",
-    path: "",
+    text: 'Management',
+    path: '',
     icon: null,
   },
   {
-    text: "Admin",
-    path: "",
+    text: 'Admin',
+    path: '',
     icon: <AdminPanelSettingsOutlined />,
   },
   {
-    text: "Performance",
-    path: "",
+    text: 'Performance',
+    path: '',
     icon: <TrendingUpOutlined />,
   },
 ];

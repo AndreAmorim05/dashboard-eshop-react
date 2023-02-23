@@ -1,3 +1,4 @@
+import React from 'react';
 import Loadable from 'components/Loadable';
 import { lazy } from 'react';
 import JWTLogout from './JWTLogout';
