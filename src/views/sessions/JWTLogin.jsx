@@ -14,25 +14,31 @@ import { Formik } from 'formik';
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import IMG from 'assets/images/illustrations/login.svg';
 
 const Paragraph = ({ children }) => {
   return <Typography variant="body2">{children}</Typography>;
 };
 
-const FlexBox = styled(Box)(() => ({ display: 'flex', alignItems: 'center' }));
+const FlexBox = styled(Box)(() => ({
+  display: 'flex',
+  alignItems: 'center',
+}));
 
-const JustifyBox = styled(FlexBox)(() => ({ justifyContent: 'center' }));
+const JustifyBox = styled(FlexBox)(({ theme }) => ({
+  justifyContent: 'center',
+}));
 
-const ContentBox = styled(Box)(() => ({
+const ContentBox = styled(Box)(({ theme }) => ({
   height: '100%',
   padding: '32px',
   position: 'relative',
-  background: 'rgba(0, 0, 0, 0.01)',
 }));
 
-const JWTRoot = styled(JustifyBox)(() => ({
-  background: '#1A2038',
+const JWTRoot = styled(JustifyBox)(({ theme }) => ({
+  background: theme.palette.background.alt,
   minHeight: '100% !important',
+  height: '100vh',
   '& .card': {
     maxWidth: 800,
     minHeight: 400,
@@ -73,22 +79,20 @@ const JwtLogin = () => {
       await login(values.email, values.password);
       navigate('/');
     } catch (e) {
-      console.log('🚀 ~ file: index.jsx:74 ~ handleFormSubmit ~ e:', e);
       setLoading(false);
     }
   };
 
   return (
     <JWTRoot>
-      <Card className="card">
+      <Card
+        className="card"
+        sx={{ background: theme.palette.background.default }}
+      >
         <Grid container>
           <Grid item sm={6} xs={12}>
             <JustifyBox p={4} height="100%" sx={{ minWidth: 320 }}>
-              <img
-                src="/assets/images/illustrations/dreamer.svg"
-                width="100%"
-                alt=""
-              />
+              <img src={IMG} width="100%" alt="" />
             </JustifyBox>
           </Grid>
 
@@ -145,7 +149,13 @@ const JwtLogin = () => {
                           name="remember"
                           onChange={handleChange}
                           checked={values.remember}
-                          sx={{ padding: 0 }}
+                          sx={{
+                            padding: 0,
+                            color: theme.palette.secondary[500],
+                            '&.Mui-checked': {
+                              color: theme.palette.secondary[500],
+                            },
+                          }}
                         />
 
                         <Paragraph>Remember Me</Paragraph>
@@ -153,7 +163,7 @@ const JwtLogin = () => {
 
                       <NavLink
                         to="/session/forgot-password"
-                        style={{ color: theme.palette.primary.main }}
+                        style={{ color: theme.palette.secondary[500] }}
                       >
                         Forgot password?
                       </NavLink>
@@ -161,10 +171,13 @@ const JwtLogin = () => {
 
                     <LoadingButton
                       type="submit"
-                      color="primary"
                       loading={loading}
                       variant="contained"
-                      sx={{ my: 2 }}
+                      sx={{
+                        my: 2,
+                        color: theme.palette.primary[900],
+                        backgroundColor: theme.palette.secondary[500],
+                      }}
                     >
                       Login
                     </LoadingButton>
@@ -174,7 +187,7 @@ const JwtLogin = () => {
                       <NavLink
                         to="/session/signup"
                         style={{
-                          color: theme.palette.primary.main,
+                          color: theme.palette.secondary[500],
                           marginLeft: 5,
                         }}
                       >
