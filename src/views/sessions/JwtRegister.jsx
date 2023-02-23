@@ -1,13 +1,24 @@
 import { useTheme } from '@emotion/react';
 import { LoadingButton } from '@mui/lab';
-import { Card, Checkbox, Grid, TextField } from '@mui/material';
-import { Box, styled } from '@mui/system';
-import { Paragraph } from 'app/components/Typography';
-import useAuth from 'app/hooks/useAuth';
+import {
+  Box,
+  Card,
+  Checkbox,
+  Grid,
+  TextField,
+  Typography,
+} from '@mui/material';
+import { styled } from '@mui/material/styles';
+import useAuth from 'hooks/useAuth';
 import { Formik } from 'formik';
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import IMG from 'assets/images/illustrations/register.svg';
+
+const Paragraph = ({ children }) => {
+  return <Typography variant="body2">{children}</Typography>;
+};
 
 const FlexBox = styled(Box)(() => ({ display: 'flex', alignItems: 'center' }));
 
@@ -19,8 +30,8 @@ const ContentBox = styled(JustifyBox)(() => ({
   background: 'rgba(0, 0, 0, 0.01)',
 }));
 
-const JWTRegister = styled(JustifyBox)(() => ({
-  background: '#1A2038',
+const JWTRegister = styled(JustifyBox)(({ theme }) => ({
+  background: theme.palette.background.alt,
   minHeight: '100vh !important',
   '& .card': {
     maxWidth: 800,
@@ -71,15 +82,14 @@ const JwtRegister = () => {
 
   return (
     <JWTRegister>
-      <Card className="card">
+      <Card
+        className="card"
+        sx={{ background: theme.palette.background.default }}
+      >
         <Grid container>
           <Grid item sm={6} xs={12}>
             <ContentBox>
-              <img
-                width="100%"
-                alt="Register"
-                src="/assets/images/illustrations/posting_photo.svg"
-              />
+              <img width="100%" alt="Register" src={IMG} />
             </ContentBox>
           </Grid>
 
@@ -149,7 +159,13 @@ const JwtRegister = () => {
                         name="remember"
                         onChange={handleChange}
                         checked={values.remember}
-                        sx={{ padding: 0 }}
+                        sx={{
+                          padding: 0,
+                          color: theme.palette.secondary[500],
+                          '&.Mui-checked': {
+                            color: theme.palette.secondary[500],
+                          },
+                        }}
                       />
 
                       <Paragraph fontSize={13}>
@@ -162,7 +178,16 @@ const JwtRegister = () => {
                       color="primary"
                       loading={loading}
                       variant="contained"
-                      sx={{ mb: 2, mt: 3 }}
+                      sx={{
+                        mb: 2,
+                        mt: 3,
+                        color: theme.palette.primary[900],
+                        backgroundColor: theme.palette.secondary[500],
+                        '&:hover': {
+                          color: theme.palette.secondary[500],
+                          backgroundColor: theme.palette.background.alt,
+                        },
+                      }}
                     >
                       Regiser
                     </LoadingButton>
@@ -172,7 +197,7 @@ const JwtRegister = () => {
                       <NavLink
                         to="/session/signin"
                         style={{
-                          color: theme.palette.primary.main,
+                          color: theme.palette.secondary[500],
                           marginLeft: 5,
                         }}
                       >
