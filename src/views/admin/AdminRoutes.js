@@ -5,6 +5,7 @@ import { authRoles } from 'auth/authRoles';
 
 const Dashbaoard = Loadable(lazy(() => import('./dashboard')));
 const Products = Loadable(lazy(() => import('./products')));
+const AddProduct = Loadable(lazy(() => import('./products/addProduct')));
 
 const adminRoutes = [
   {
@@ -15,6 +16,11 @@ const adminRoutes = [
   {
     path: '/dashboard/products',
     element: <Products />,
+    auth: authRoles.admin,
+  },
+  {
+    path: '/dashboard/products/add-product',
+    element: <AddProduct />,
     auth: authRoles.admin,
   },
 ];

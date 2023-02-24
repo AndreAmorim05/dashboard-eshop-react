@@ -11,6 +11,7 @@ import {
   useTheme,
   useMediaQuery,
 } from '@mui/material';
+import { useLocation, useNavigate } from 'react-router-dom';
 import BaseContainer from 'components/BaseContainer';
 import { useGetProducts } from 'api/hooks/useProducts';
 // import { useGetProductsQuery } from "state/api";
@@ -89,13 +90,50 @@ const Product = ({
   );
 };
 
+const AddButton = () => {
+  const theme = useTheme();
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  const handleClick = () => {
+    navigate(`${pathname}/add-product`);
+  };
+  return (
+    <Button
+      sx={{
+        color: theme.palette.primary[900],
+        backgroundColor: theme.palette.secondary[500],
+        '&:hover': {
+          color: theme.palette.secondary[500],
+          backgroundColor: theme.palette.primary[900],
+        },
+      }}
+      onClick={handleClick}
+    >
+      Add Product
+    </Button>
+  );
+};
+
 const Products = () => {
   // const { data, isLoading } = useGetProductsQuery();
   const { data, isLoading } = useGetProducts();
   const isNonMobile = useMediaQuery('(min-width: 1000px)');
+  const [source, setSource] = useState(null);
+
+  useEffect(() => {
+    setSource(<AddButton />);
+    return () => {
+      setSource(null);
+    };
+  }, []);
 
   return (
-    <BaseContainer title="PRODUCTS" subtitle="See your list of products.">
+    <BaseContainer
+      title="PRODUCTS"
+      source={source}
+      subtitle="See your list of products."
+    >
       {data || !isLoading ? (
         <Box
           mt="20px"
