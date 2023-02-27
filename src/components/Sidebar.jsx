@@ -146,7 +146,7 @@ const Sidebar = ({
             <FlexBetween
               textTransform="none"
               gap="1.5rem"
-              m="1.5rem 2rem 1.5rem 1.9rem"
+              m="1.5rem 2rem 1.5rem 3.15rem"
             >
               {!isLoading ? (
                 <>
