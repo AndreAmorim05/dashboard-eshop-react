@@ -30,6 +30,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@emotion/react", "virtual:9fbaf1d3f4de300e544ec3fed3dcd280e8e163fae2ab10816fddacd4ea155c1bacf2311c86de7e6e3303c3bfddd66637fbf4c9615e971080fb3e37d8a13614f8#npm:11.10.5"],\
             ["@emotion/styled", "virtual:9fbaf1d3f4de300e544ec3fed3dcd280e8e163fae2ab10816fddacd4ea155c1bacf2311c86de7e6e3303c3bfddd66637fbf4c9615e971080fb3e37d8a13614f8#npm:11.10.5"],\
+            ["@faker-js/faker", "npm:7.6.0"],\
             ["@mui/icons-material", "virtual:9fbaf1d3f4de300e544ec3fed3dcd280e8e163fae2ab10816fddacd4ea155c1bacf2311c86de7e6e3303c3bfddd66637fbf4c9615e971080fb3e37d8a13614f8#npm:5.11.0"],\
             ["@mui/lab", "virtual:9fbaf1d3f4de300e544ec3fed3dcd280e8e163fae2ab10816fddacd4ea155c1bacf2311c86de7e6e3303c3bfddd66637fbf4c9615e971080fb3e37d8a13614f8#npm:5.0.0-alpha.120"],\
             ["@mui/material", "virtual:9fbaf1d3f4de300e544ec3fed3dcd280e8e163fae2ab10816fddacd4ea155c1bacf2311c86de7e6e3303c3bfddd66637fbf4c9615e971080fb3e37d8a13614f8#npm:5.11.8"],\
@@ -39,6 +40,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/react", "virtual:9fbaf1d3f4de300e544ec3fed3dcd280e8e163fae2ab10816fddacd4ea155c1bacf2311c86de7e6e3303c3bfddd66637fbf4c9615e971080fb3e37d8a13614f8#npm:13.4.0"],\
             ["@testing-library/user-event", "virtual:9fbaf1d3f4de300e544ec3fed3dcd280e8e163fae2ab10816fddacd4ea155c1bacf2311c86de7e6e3303c3bfddd66637fbf4c9615e971080fb3e37d8a13614f8#npm:13.5.0"],\
             ["axios", "npm:1.3.3"],\
+            ["change-case", "npm:4.1.2"],\
             ["dotenv", "npm:16.0.3"],\
             ["eslint", "npm:8.34.0"],\
             ["eslint-config-prettier", "virtual:9fbaf1d3f4de300e544ec3fed3dcd280e8e163fae2ab10816fddacd4ea155c1bacf2311c86de7e6e3303c3bfddd66637fbf4c9615e971080fb3e37d8a13614f8#npm:8.6.0"],\
@@ -48,6 +50,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["formik", "virtual:9fbaf1d3f4de300e544ec3fed3dcd280e8e163fae2ab10816fddacd4ea155c1bacf2311c86de7e6e3303c3bfddd66637fbf4c9615e971080fb3e37d8a13614f8#npm:2.2.9"],\
             ["husky", "npm:8.0.3"],\
             ["jwt-decode", "npm:3.1.2"],\
+            ["lodash", "npm:4.17.21"],\
             ["prettier", "npm:2.8.4"],\
             ["react", "npm:18.2.0"],\
             ["react-datepicker", "virtual:9fbaf1d3f4de300e544ec3fed3dcd280e8e163fae2ab10816fddacd4ea155c1bacf2311c86de7e6e3303c3bfddd66637fbf4c9615e971080fb3e37d8a13614f8#npm:4.10.0"],\
@@ -3481,6 +3484,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["js-yaml", "npm:4.1.0"],\
             ["minimatch", "npm:3.1.2"],\
             ["strip-json-comments", "npm:3.1.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@faker-js/faker", [\
+        ["npm:7.6.0", {\
+          "packageLocation": "./.yarn/cache/@faker-js-faker-npm-7.6.0-fa135883e9-942af62217.zip/node_modules/@faker-js/faker/",\
+          "packageDependencies": [\
+            ["@faker-js/faker", "npm:7.6.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -7180,6 +7192,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["capital-case", [\
+        ["npm:1.0.4", {\
+          "packageLocation": "./.yarn/cache/capital-case-npm-1.0.4-90f8a4641d-41fa8fa87f.zip/node_modules/capital-case/",\
+          "packageDependencies": [\
+            ["capital-case", "npm:1.0.4"],\
+            ["no-case", "npm:3.0.4"],\
+            ["tslib", "npm:2.5.0"],\
+            ["upper-case-first", "npm:2.0.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["case-sensitive-paths-webpack-plugin", [\
         ["npm:2.4.0", {\
           "packageLocation": "./.yarn/cache/case-sensitive-paths-webpack-plugin-npm-2.4.0-b4f3c3a8be-bcf469446e.zip/node_modules/case-sensitive-paths-webpack-plugin/",\
@@ -7215,6 +7239,27 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["chalk", "npm:4.1.2"],\
             ["ansi-styles", "npm:4.3.0"],\
             ["supports-color", "npm:7.2.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["change-case", [\
+        ["npm:4.1.2", {\
+          "packageLocation": "./.yarn/cache/change-case-npm-4.1.2-9c42f72b39-e4bc4a093a.zip/node_modules/change-case/",\
+          "packageDependencies": [\
+            ["change-case", "npm:4.1.2"],\
+            ["camel-case", "npm:4.1.2"],\
+            ["capital-case", "npm:1.0.4"],\
+            ["constant-case", "npm:3.0.4"],\
+            ["dot-case", "npm:3.0.4"],\
+            ["header-case", "npm:2.0.4"],\
+            ["no-case", "npm:3.0.4"],\
+            ["param-case", "npm:3.0.4"],\
+            ["pascal-case", "npm:3.1.2"],\
+            ["path-case", "npm:3.0.4"],\
+            ["sentence-case", "npm:3.0.4"],\
+            ["snake-case", "npm:3.0.4"],\
+            ["tslib", "npm:2.5.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -7555,6 +7600,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/console-control-strings-npm-1.1.0-e3160e5275-8755d76787.zip/node_modules/console-control-strings/",\
           "packageDependencies": [\
             ["console-control-strings", "npm:1.1.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["constant-case", [\
+        ["npm:3.0.4", {\
+          "packageLocation": "./.yarn/cache/constant-case-npm-3.0.4-118b472e28-6c3346d51a.zip/node_modules/constant-case/",\
+          "packageDependencies": [\
+            ["constant-case", "npm:3.0.4"],\
+            ["no-case", "npm:3.0.4"],\
+            ["tslib", "npm:2.5.0"],\
+            ["upper-case", "npm:2.0.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -8109,6 +8166,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["dashboard-mui", "workspace:."],\
             ["@emotion/react", "virtual:9fbaf1d3f4de300e544ec3fed3dcd280e8e163fae2ab10816fddacd4ea155c1bacf2311c86de7e6e3303c3bfddd66637fbf4c9615e971080fb3e37d8a13614f8#npm:11.10.5"],\
             ["@emotion/styled", "virtual:9fbaf1d3f4de300e544ec3fed3dcd280e8e163fae2ab10816fddacd4ea155c1bacf2311c86de7e6e3303c3bfddd66637fbf4c9615e971080fb3e37d8a13614f8#npm:11.10.5"],\
+            ["@faker-js/faker", "npm:7.6.0"],\
             ["@mui/icons-material", "virtual:9fbaf1d3f4de300e544ec3fed3dcd280e8e163fae2ab10816fddacd4ea155c1bacf2311c86de7e6e3303c3bfddd66637fbf4c9615e971080fb3e37d8a13614f8#npm:5.11.0"],\
             ["@mui/lab", "virtual:9fbaf1d3f4de300e544ec3fed3dcd280e8e163fae2ab10816fddacd4ea155c1bacf2311c86de7e6e3303c3bfddd66637fbf4c9615e971080fb3e37d8a13614f8#npm:5.0.0-alpha.120"],\
             ["@mui/material", "virtual:9fbaf1d3f4de300e544ec3fed3dcd280e8e163fae2ab10816fddacd4ea155c1bacf2311c86de7e6e3303c3bfddd66637fbf4c9615e971080fb3e37d8a13614f8#npm:5.11.8"],\
@@ -8118,6 +8176,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/react", "virtual:9fbaf1d3f4de300e544ec3fed3dcd280e8e163fae2ab10816fddacd4ea155c1bacf2311c86de7e6e3303c3bfddd66637fbf4c9615e971080fb3e37d8a13614f8#npm:13.4.0"],\
             ["@testing-library/user-event", "virtual:9fbaf1d3f4de300e544ec3fed3dcd280e8e163fae2ab10816fddacd4ea155c1bacf2311c86de7e6e3303c3bfddd66637fbf4c9615e971080fb3e37d8a13614f8#npm:13.5.0"],\
             ["axios", "npm:1.3.3"],\
+            ["change-case", "npm:4.1.2"],\
             ["dotenv", "npm:16.0.3"],\
             ["eslint", "npm:8.34.0"],\
             ["eslint-config-prettier", "virtual:9fbaf1d3f4de300e544ec3fed3dcd280e8e163fae2ab10816fddacd4ea155c1bacf2311c86de7e6e3303c3bfddd66637fbf4c9615e971080fb3e37d8a13614f8#npm:8.6.0"],\
@@ -8127,6 +8186,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["formik", "virtual:9fbaf1d3f4de300e544ec3fed3dcd280e8e163fae2ab10816fddacd4ea155c1bacf2311c86de7e6e3303c3bfddd66637fbf4c9615e971080fb3e37d8a13614f8#npm:2.2.9"],\
             ["husky", "npm:8.0.3"],\
             ["jwt-decode", "npm:3.1.2"],\
+            ["lodash", "npm:4.17.21"],\
             ["prettier", "npm:2.8.4"],\
             ["react", "npm:18.2.0"],\
             ["react-datepicker", "virtual:9fbaf1d3f4de300e544ec3fed3dcd280e8e163fae2ab10816fddacd4ea155c1bacf2311c86de7e6e3303c3bfddd66637fbf4c9615e971080fb3e37d8a13614f8#npm:4.10.0"],\
@@ -10498,6 +10558,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/he-npm-1.2.0-3b73a2ff07-3d4d6babcc.zip/node_modules/he/",\
           "packageDependencies": [\
             ["he", "npm:1.2.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["header-case", [\
+        ["npm:2.0.4", {\
+          "packageLocation": "./.yarn/cache/header-case-npm-2.0.4-7d19e19e6d-571c83eeb2.zip/node_modules/header-case/",\
+          "packageDependencies": [\
+            ["header-case", "npm:2.0.4"],\
+            ["capital-case", "npm:1.0.4"],\
+            ["tslib", "npm:2.5.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -13554,6 +13625,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["pascal-case", "npm:3.1.2"],\
             ["no-case", "npm:3.0.4"],\
+            ["tslib", "npm:2.5.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["path-case", [\
+        ["npm:3.0.4", {\
+          "packageLocation": "./.yarn/cache/path-case-npm-3.0.4-5a1981bc0c-61de052622.zip/node_modules/path-case/",\
+          "packageDependencies": [\
+            ["path-case", "npm:3.0.4"],\
+            ["dot-case", "npm:3.0.4"],\
             ["tslib", "npm:2.5.0"]\
           ],\
           "linkType": "HARD"\
@@ -16820,6 +16902,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["sentence-case", [\
+        ["npm:3.0.4", {\
+          "packageLocation": "./.yarn/cache/sentence-case-npm-3.0.4-ed6888d0bc-3cfe6c0143.zip/node_modules/sentence-case/",\
+          "packageDependencies": [\
+            ["sentence-case", "npm:3.0.4"],\
+            ["no-case", "npm:3.0.4"],\
+            ["tslib", "npm:2.5.0"],\
+            ["upper-case-first", "npm:2.0.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["serialize-javascript", [\
         ["npm:4.0.0", {\
           "packageLocation": "./.yarn/cache/serialize-javascript-npm-4.0.0-b4aeff413b-3273b3394b.zip/node_modules/serialize-javascript/",\
@@ -16971,6 +17065,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/smart-buffer-npm-4.2.0-5ac3f668bb-b5167a7142.zip/node_modules/smart-buffer/",\
           "packageDependencies": [\
             ["smart-buffer", "npm:4.2.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["snake-case", [\
+        ["npm:3.0.4", {\
+          "packageLocation": "./.yarn/cache/snake-case-npm-3.0.4-67f447c30d-0a7a79900b.zip/node_modules/snake-case/",\
+          "packageDependencies": [\
+            ["snake-case", "npm:3.0.4"],\
+            ["dot-case", "npm:3.0.4"],\
+            ["tslib", "npm:2.5.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -18144,6 +18249,26 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packagePeers": [\
             "@types/browserslist",\
             "browserslist"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["upper-case", [\
+        ["npm:2.0.2", {\
+          "packageLocation": "./.yarn/cache/upper-case-npm-2.0.2-6cf3bda96c-508723a2b0.zip/node_modules/upper-case/",\
+          "packageDependencies": [\
+            ["upper-case", "npm:2.0.2"],\
+            ["tslib", "npm:2.5.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["upper-case-first", [\
+        ["npm:2.0.2", {\
+          "packageLocation": "./.yarn/cache/upper-case-first-npm-2.0.2-8e0c5a851a-4487db4701.zip/node_modules/upper-case-first/",\
+          "packageDependencies": [\
+            ["upper-case-first", "npm:2.0.2"],\
+            ["tslib", "npm:2.5.0"]\
           ],\
           "linkType": "HARD"\
         }]\

@@ -31,7 +31,7 @@ export const navigations = [
   },
   {
     text: 'Customers',
-    path: '',
+    path: 'dashboard/customers',
     icon: <Groups2Outlined />,
   },
   {
