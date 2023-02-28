@@ -1,9 +1,6 @@
 import React from 'react';
-import { set, sub } from 'date-fns';
 import { noCase } from 'change-case';
-import { faker } from '@faker-js/faker';
 import { useState } from 'react';
-// @mui
 import {
   Box,
   List,
@@ -24,58 +21,87 @@ import {
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import DoneAllIcon from '@mui/icons-material/DoneAll';
-// utils
 import { fToNow } from 'utils/formatDate';
+import NOTIFICATIONS from './mock';
 
-// ----------------------------------------------------------------------
+function renderContent(notification, theme) {
+  const iconPaths = {
+    order_placed: '/assets/icons/ic_notification_package.svg',
+    order_shipped: '/assets/icons/ic_notification_shipping.svg',
+    mail: '/assets/icons/ic_notification_mail.svg',
+    chat_message: '/assets/icons/ic_notification_chat.svg',
+  };
+  const iconPath = iconPaths[notification.type];
 
-const NOTIFICATIONS = [
-  {
-    id: faker.datatype.uuid(),
-    title: 'Your order is placed',
-    description: 'waiting for shipping',
-    avatar: null,
-    type: 'order_placed',
-    createdAt: set(new Date(), { hours: 10, minutes: 30 }),
-    isUnRead: true,
-  },
-  {
-    id: faker.datatype.uuid(),
-    title: faker.name.fullName(),
-    description: 'answered to your comment on the Minimal',
-    avatar: '/assets/images/avatars/avatar_2.jpg',
-    type: 'friend_interactive',
-    createdAt: sub(new Date(), { hours: 3, minutes: 30 }),
-    isUnRead: true,
-  },
-  {
-    id: faker.datatype.uuid(),
-    title: 'You have new message',
-    description: '5 unread messages',
-    avatar: null,
-    type: 'chat_message',
-    createdAt: sub(new Date(), { days: 1, hours: 3, minutes: 30 }),
-    isUnRead: false,
-  },
-  {
-    id: faker.datatype.uuid(),
-    title: 'You have new mail',
-    description: 'sent from Guido Padberg',
-    avatar: null,
-    type: 'mail',
-    createdAt: sub(new Date(), { days: 2, hours: 3, minutes: 30 }),
-    isUnRead: false,
-  },
-  {
-    id: faker.datatype.uuid(),
-    title: 'Delivery processing',
-    description: 'Your order is being shipped',
-    avatar: null,
-    type: 'order_shipped',
-    createdAt: sub(new Date(), { days: 3, hours: 3, minutes: 30 }),
-    isUnRead: false,
-  },
-];
+  return {
+    avatar: iconPath ? <img alt={notification.title} src={iconPath} /> : null,
+    title: (
+      <Typography variant="subtitle2">
+        {notification.title}
+        <Typography
+          component="span"
+          variant="body2"
+          sx={{
+            color: 'text.secondary',
+            ...(notification.isUnRead && {
+              color: theme.palette.secondary[100],
+            }),
+          }}
+        >
+          &nbsp; {noCase(notification.description)}
+        </Typography>
+      </Typography>
+    ),
+  };
+}
+
+function NotificationItem({ notification }) {
+  const theme = useTheme();
+  const { avatar, title } = renderContent(notification, theme);
+  const isUnread = notification.isUnRead;
+
+  return (
+    <ListItemButton
+      sx={{
+        py: 1.5,
+        px: 2.5,
+        mt: '1px',
+        bgcolor: isUnread ? 'primary.light' : 'transparent',
+        '&:hover': {
+          color: theme.palette.secondary.main,
+        },
+      }}
+    >
+      <ListItemAvatar>
+        <Avatar sx={{ bgcolor: 'background.neutral' }}>{avatar}</Avatar>
+      </ListItemAvatar>
+      <ListItemText
+        sx={{
+          color: isUnread
+            ? theme.palette.secondary[300]
+            : theme.palette.secondary[100],
+          '& > * + *': {
+            mt: 0.5,
+            display: 'flex',
+            alignItems: 'center',
+            color: isUnread
+              ? theme.palette.primary[300]
+              : theme.palette.secondary[200],
+          },
+        }}
+        primary={title}
+        secondary={
+          <>
+            <AccessTimeIcon sx={{ mr: 0.5, width: 16, height: 16 }} />
+            <Typography variant="caption" component="span">
+              {fToNow(notification.createdAt)}
+            </Typography>
+          </>
+        }
+      />
+    </ListItemButton>
+  );
+}
 
 export default function NotificationsPopover() {
   const [notifications, setNotifications] = useState(NOTIFICATIONS);
@@ -212,97 +238,20 @@ export default function NotificationsPopover() {
         <Divider sx={{ borderStyle: 'dashed' }} />
 
         <Box sx={{ p: 1 }}>
-          <Button fullWidth disableRipple>
+          <Button
+            fullWidth
+            disableRipple
+            sx={{
+              color:
+                theme.palette.mode === 'dark'
+                  ? theme.palette.secondary[500]
+                  : theme.palette.secondary[200],
+            }}
+          >
             View All
           </Button>
         </Box>
       </Popover>
     </>
   );
-}
-
-// ----------------------------------------------------------------------
-
-function NotificationItem({ notification }) {
-  const { avatar, title } = renderContent(notification);
-  const theme = useTheme();
-  const isUnread = notification.isUnRead;
-
-  return (
-    <ListItemButton
-      sx={{
-        py: 1.5,
-        px: 2.5,
-        mt: '1px',
-        bgcolor: isUnread ? theme.palette.secondary[300] : 'transparent',
-        color: isUnread
-          ? theme.palette.primary[200]
-          : theme.palette.secondary[400],
-        '&:hover': {
-          color: theme.palette.secondary.main,
-        },
-      }}
-    >
-      <ListItemAvatar>
-        <Avatar sx={{ bgcolor: 'background.neutral' }}>{avatar}</Avatar>
-      </ListItemAvatar>
-      <ListItemText
-        sx={{
-          color: isUnread
-            ? theme.palette.primary[600]
-            : theme.palette.secondary[400],
-          '& > * + *': {
-            mt: 0.5,
-            display: 'flex',
-            alignItems: 'center',
-            color: isUnread
-              ? theme.palette.primary[300]
-              : theme.palette.secondary[200],
-          },
-        }}
-        primary={title}
-        secondary={
-          <>
-            <AccessTimeIcon sx={{ mr: 0.5, width: 16, height: 16 }} />
-            <Typography variant="caption" component="span">
-              {fToNow(notification.createdAt)}
-            </Typography>
-          </>
-        }
-      />
-    </ListItemButton>
-  );
-}
-
-// ----------------------------------------------------------------------
-
-function renderContent(notification) {
-  const iconPaths = {
-    order_placed: '/assets/icons/ic_notification_package.svg',
-    order_shipped: '/assets/icons/ic_notification_shipping.svg',
-    mail: '/assets/icons/ic_notification_mail.svg',
-    chat_message: '/assets/icons/ic_notification_chat.svg',
-  };
-  const iconPath = iconPaths[notification.type];
-
-  return {
-    avatar: iconPath ? <img alt={notification.title} src={iconPath} /> : null,
-    title: (
-      <Typography variant="subtitle2">
-        {notification.title}
-        <Typography
-          component="span"
-          variant="body2"
-          sx={{
-            color: 'text.secondary',
-            ...(notification.isUnRead && {
-              color: 'primary.light',
-            }),
-          }}
-        >
-          &nbsp; {noCase(notification.description)}
-        </Typography>
-      </Typography>
-    ),
-  };
 }
