@@ -41,6 +41,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/user-event", "virtual:9fbaf1d3f4de300e544ec3fed3dcd280e8e163fae2ab10816fddacd4ea155c1bacf2311c86de7e6e3303c3bfddd66637fbf4c9615e971080fb3e37d8a13614f8#npm:13.5.0"],\
             ["axios", "npm:1.3.3"],\
             ["change-case", "npm:4.1.2"],\
+            ["date-fns", "npm:2.29.3"],\
             ["dotenv", "npm:16.0.3"],\
             ["eslint", "npm:8.34.0"],\
             ["eslint-config-prettier", "virtual:9fbaf1d3f4de300e544ec3fed3dcd280e8e163fae2ab10816fddacd4ea155c1bacf2311c86de7e6e3303c3bfddd66637fbf4c9615e971080fb3e37d8a13614f8#npm:8.6.0"],\
@@ -8177,6 +8178,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/user-event", "virtual:9fbaf1d3f4de300e544ec3fed3dcd280e8e163fae2ab10816fddacd4ea155c1bacf2311c86de7e6e3303c3bfddd66637fbf4c9615e971080fb3e37d8a13614f8#npm:13.5.0"],\
             ["axios", "npm:1.3.3"],\
             ["change-case", "npm:4.1.2"],\
+            ["date-fns", "npm:2.29.3"],\
             ["dotenv", "npm:16.0.3"],\
             ["eslint", "npm:8.34.0"],\
             ["eslint-config-prettier", "virtual:9fbaf1d3f4de300e544ec3fed3dcd280e8e163fae2ab10816fddacd4ea155c1bacf2311c86de7e6e3303c3bfddd66637fbf4c9615e971080fb3e37d8a13614f8#npm:8.6.0"],\

@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Box, useMediaQuery } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import Navbar from 'components/Navbar';
-import Sidebar from 'components/Sidebar';
+import Navbar from 'views/admin/layout/Navbar';
+import Sidebar from 'views/admin/layout/Sidebar';
 import { useGetUserQuery } from 'state/api';
 import api from 'api/routes';
 import { useGetMe } from 'api/hooks/useUser';
@@ -13,6 +13,7 @@ const Layout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(
     isNonMobile ? true : false
   );
+  const [drawerWidth, setDrawerWidth] = useState('250px');
   const userId = useSelector((state) => state.global.userId);
   // const { data } = useGetUserQuery(userId);
   const { data, isLoading } = useGetMe();
@@ -23,7 +24,7 @@ const Layout = () => {
         user={data}
         isLoading={isLoading}
         isNonMobile={isNonMobile}
-        drawerWidth="250px"
+        drawerWidth={drawerWidth}
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
       />
@@ -31,6 +32,8 @@ const Layout = () => {
         <Navbar
           user={data}
           isLoading={isLoading}
+          isNonMobile={isNonMobile}
+          drawerWidth={drawerWidth}
           isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
         />

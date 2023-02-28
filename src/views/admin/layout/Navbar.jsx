@@ -7,6 +7,8 @@ import {
   SettingsOutlined,
   ArrowDropDownOutlined,
 } from '@mui/icons-material';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import { Badge } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import FlexBetween from 'components/FlexBetween';
@@ -24,8 +26,15 @@ import {
   useTheme,
   Skeleton,
 } from '@mui/material';
+import NotificationsPopover from './NotificationsPopover';
 
-const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen, isLoading }) => {
+const Navbar = ({
+  drawerWidth,
+  user,
+  isSidebarOpen,
+  setIsSidebarOpen,
+  isLoading,
+}) => {
   const dispatch = useDispatch();
   const theme = useTheme();
   const navigate = useNavigate();
@@ -48,6 +57,10 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen, isLoading }) => {
         position: 'static',
         background: 'none',
         boxShadow: 'none',
+        [theme.breakpoints.up('sm')]: {
+          position: 'static',
+          width: isOpen ? `calc(100% - ${drawerWidth + 1}px)` : '100%',
+        },
       }}
     >
       <Toolbar sx={{ justifyContent: 'space-between' }}>
@@ -56,7 +69,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen, isLoading }) => {
           <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
             <MenuIcon />
           </IconButton>
-          <FlexBetween
+          {/* <FlexBetween
             backgroundColor={theme.palette.background.alt}
             borderRadius="9px"
             gap="3rem"
@@ -66,11 +79,11 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen, isLoading }) => {
             <IconButton>
               <Search />
             </IconButton>
-          </FlexBetween>
+          </FlexBetween> */}
         </FlexBetween>
 
         {/* RIGHT SIDE */}
-        <FlexBetween gap="1.5rem">
+        <FlexBetween gap="0.3rem">
           <IconButton onClick={() => dispatch(setMode())}>
             {theme.palette.mode === 'dark' ? (
               <LightModeOutlined sx={{ fontSize: '25px' }} />
@@ -78,6 +91,8 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen, isLoading }) => {
               <DarkModeOutlined sx={{ fontSize: '25px' }} />
             )}
           </IconButton>
+
+          <NotificationsPopover />
 
           <FlexBetween>
             <Button
@@ -87,7 +102,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen, isLoading }) => {
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 textTransform: 'none',
-                gap: '1rem',
+                gap: '0.8rem',
               }}
             >
               {!isLoading ? (
