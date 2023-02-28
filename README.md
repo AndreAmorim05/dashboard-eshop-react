@@ -1,4 +1,4 @@
-# Project Name
+# Dashboard E-Shop React
 
 Introducing our exceptional React dashboard, built for the administration area of an ecommerce. With carefully selected dependencies like Material UI, Redux Toolkit, and Yup, this project structure is remarkable. The user-friendly components from React Router DOM and Formik make it easy to create intricate routing systems and forms. Efficient data fetching and management is ensured with our seamless integration with Axios and React Query. With advanced Datepicker and Dropzone components, managing date selection and file uploads is a breeze. Our dashboard's exceptional design and functionality make it ideal for any web application. Upgrade your development journey with our unparalleled React dashboard today.
 ## Back-Ends
@@ -28,6 +28,12 @@ This project uses the following dependencies:
 - Yup
 
 ## Usage
+
+Create a file .env.local in the root directory with the follow vars:
+```
+REACT_APP_BASE_URL = http://localhost:8000 (use your back-end base url)
+API_URL = /api/v1 (use your base route)
+```
 
 Run `yarn start` to start the development server.
 Navigate to http://localhost:3000 in your browser.
