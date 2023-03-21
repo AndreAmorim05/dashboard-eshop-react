@@ -9,7 +9,7 @@ export default function usePostLogin() {
       queryClient.invalidateQueries('login');
     },
     onError: (error) => {
-      console.log('Erro ao fazer login do usuário:', error.message);
+      console.log('Erro ao fazer login do usuário:', error);
     },
   });
 }

@@ -5,13 +5,22 @@ import NotFound from 'views/sessions/NotFound';
 import sessionRoutes from 'views/sessions/SessionRoutes';
 import { Navigate } from 'react-router-dom';
 import Layout from 'views/admin/layout';
+import RequireAuth from 'auth/RequireAuth';
+import PersistLogin from 'auth/PersistLogin';
 
 const routes = [
   {
+    // element: (
+    //   <AuthGuard>
+    //     <Layout />
+    //   </AuthGuard>
+    // ),
     element: (
-      <AuthGuard>
-        <Layout />
-      </AuthGuard>
+      <PersistLogin>
+        <RequireAuth>
+          <Layout />
+        </RequireAuth>
+      </PersistLogin>
     ),
     children: [...adminRoutes],
   },

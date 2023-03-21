@@ -1,6 +1,6 @@
 export const authRoles = {
-  sa: ['SA'], // Only Super Admin has access
-  admin: ['SA', 'ADMIN'], // Only SA & Admin has access
-  editor: ['SA', 'ADMIN', 'EDITOR'], // Only SA & Admin & Editor has access
-  guest: ['SA', 'ADMIN', 'EDITOR', 'GUEST'], // Everyone has access
+  su: ['SU'], // Only Super Admin has access
+  admin: ['SU', 'ADMIN'], // Only SU & Admin has access
+  editor: ['SU', 'ADMIN', 'EDITOR'], // Only SU & Admin & Editor has access
+  guest: ['SU', 'ADMIN', 'EDITOR', 'GUEST'], // Everyone has access
 };

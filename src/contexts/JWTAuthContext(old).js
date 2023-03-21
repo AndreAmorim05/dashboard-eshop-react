@@ -48,7 +48,7 @@ const AuthContext = createContext({
 
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { mutate, data } = usePostLogin();
+  const mutate = usePostLogin();
 
   const setAuthState = (type, payload) => dispatch({ type, payload });
 
@@ -59,8 +59,22 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     // await mutate({email, password})
-    const response = await api.post.userLogin({ email, password });
-    handleAuthResponse(response.data, 'LOGIN');
+    // const response = await api.post.userLogin({ email, password });
+    await mutate.mutateAsync(
+      { email, password },
+      {
+        onSuccess: (data, variables, context) => {
+          console.log(data, 'Longin');
+        },
+        onError: (error, variables, context) => {
+          console.log('Deu error', error);
+        },
+        onSettled: (data, error, variables, context) => {
+          console.log(data, error);
+        },
+      }
+    );
+    // handleAuthResponse(response.data, 'LOGIN');
   };
 
   const register = async (email, username, password) => {

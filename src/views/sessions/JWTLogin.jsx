@@ -9,12 +9,16 @@ import {
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { styled } from '@mui/material/styles';
-import useAuth from 'hooks/useAuth';
 import { Formik } from 'formik';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+
 import IMG from 'assets/images/illustrations/login.svg';
+import { setCredentials } from 'auth/authSlice';
+import { useLoginMutation } from 'auth/authApiSlice';
+import usePersist from 'hooks/usePersist';
 
 const Paragraph = ({ children }) => {
   return <Typography variant="body2">{children}</Typography>;
@@ -71,15 +75,33 @@ const JwtLogin = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
-  const { login } = useAuth();
+  const [errMsg, setErrMsg] = useState('');
+  const [persist, setPersist] = usePersist();
+
+  const dispatch = useDispatch();
+
+  const [login, { isLoading }] = useLoginMutation();
 
   const handleFormSubmit = async (values) => {
     setLoading(true);
     try {
-      await login(values.email, values.password);
-      navigate('/');
-    } catch (e) {
-      setLoading(false);
+      const email = values.email;
+      const password = values.password;
+      const { accessToken } = await login({ email, password }).unwrap();
+      dispatch(setCredentials({ accessToken }));
+      navigate('/dashboard/default');
+    } catch (err) {
+      // setLoading(false);
+      if (!err.status) {
+        setErrMsg('No Server Response');
+      } else if (err.status === 400) {
+        setErrMsg('Missing Username or Password');
+      } else if (err.status === 401) {
+        setErrMsg('Unauthorized');
+      } else {
+        setErrMsg(err.data?.message);
+      }
+      console.log(errMsg);
     }
   };
 

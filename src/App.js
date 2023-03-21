@@ -5,9 +5,10 @@ import { useSelector } from 'react-redux';
 import { QueryClientProvider } from 'react-query';
 import { queryClient } from 'utils/queryClient';
 import { themeSettings } from 'theme';
+import { ReactQueryDevtools } from 'react-query/devtools';
 
 import { useRoutes } from 'react-router-dom';
-import { AuthProvider } from 'contexts/JWTAuthContext';
+// import { AuthProvider } from 'contexts/JWTAuthContext';
 import routes from './routes';
 
 function App() {
@@ -20,8 +21,9 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <AuthProvider>{content}</AuthProvider>
+          {content}
         </ThemeProvider>
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </div>
   );
